@@ -42,16 +42,16 @@ Short yet descriptive names should be used when possible. Full names are not req
 	typedef struct {
 		int fd;
 		int events;
-		int (\*handler)(int, int, void \*);
-		void \*arg;
+		int (*handler)(int, int, void *);
+		void *arg;
 	} iobroker_fd;
 
 	# Unacceptable
 	typedef struct {
 		int f;
 		int e;
-		int (\*h)(int, int, void \*);
-		void \*a;
+		int (*h)(int, int, void *);
+		void *a;
 	} ib-fd;
 
 Local counters and variables may use shorter or less descriptive names where logical and where readability is not impeded. No prefix is needed for local variables.
@@ -61,7 +61,7 @@ Local counters and variables may use shorter or less descriptive names where log
 	void acceptable (void) {
 		int c, x = 10;
 		for (c=0; c<x; c++, x--) {
-			printf("c=%d\\tx=%d\\n", c, d);
+			printf("c=%d\tx=%d\n", c, d);
 		}
 	}
 
@@ -69,8 +69,8 @@ Function arguments should always be descriptively named, with no exceptions. Fun
 
 .. code-block:: c
 
-	void acceptable (char \*string, int len);
-	void unacceptable (char \*c, int x);
+	void acceptable (char *string, int len);
+	void unacceptable (char *c, int x);
 
 Global variables should be prefixed with the ?? prefix.
 
@@ -86,10 +86,10 @@ Pointer and reference specifiers should always be attached to the left of a vari
 
 .. code-block:: c
 
-	int \*acceptabele = &variable;
+	int *acceptabele = &variable;
 
-	int \* unacceptable = & variable;
-	int\* unacceptable = & variable;
+	int * unacceptable = & variable;
+	int* unacceptable = & variable;
 
 astyle flags: --align-pointer=name --align-reference=name
 
@@ -120,11 +120,11 @@ Function and other declarations with extended arguments that must be broken onto
 .. code-block:: c
 
 	void acceptable (int i, int x,
-		char \*separated,
+		char *separated,
 		uint32_t counter);
 
 	void unacceptable (int i, int x,
-				char \*separated,
+				char *separated,
 				unint32_t counter);
 
 Switches and case statements should be indented to the same level, with statement code blocks indented one indent from the switch and case indent level.
@@ -212,13 +212,13 @@ Single line //, and single and multi-line /\* \*/ comment styles are accepted. A
 .. code-block:: c
 
 	// acceptable comment
-	/\* Acceptable comment \*/
-	/\*
+	/* Acceptable comment */
+	/*
 	 * Acceptable comment
-	\*/
-	/\*
+	*/
+	/*
 	Unacceptable comment
-	\*/
+	*/
 
 astyle flags: --add-comment-prefix
 
