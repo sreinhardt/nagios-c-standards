@@ -18,16 +18,26 @@ All projects going forward must adhere to passing compilation against -Wall and 
 Language Semantics
 ====================
 
-Overall Astyle format flags
+Overall Astyle format command
 --------------------
-astyle --style=attach --align-pointer=name --align-reference=name --indent=force-tab --indent-cases --pad-oper --pad-header --unpad-paren --break-closing-brackets --keep-one-line-blocks --add-comment-prefix --indent-preproc-define --preserve-date --linend=linux [file]
+.. code-block:: bash
+
+	astyle --style=attach \
+		--align-pointer=name --align-reference=name \
+		--indent=force-tab --indent-cases \
+		--indent-preproc-define \
+		--pad-oper --pad-header --unpad-paren \
+		--break-closing-brackets --keep-one-line-blocks \
+		--add-comment-prefix \
+		--preserve-date --linend=linux \
+		[file]
 
 Variable Conventions
 --------------------
 Short yet descriptive names should be used when possible. Full names are not required, however a reasonable expansion of the name should be possible. Variable names should be separated by underscores(_), not camel case(NagMon) or hyphens(-).
 
 .. code-block:: c
-	:linenos:
+
 	# Acceptable
 	typedef struct {
 		int fd;
@@ -47,7 +57,7 @@ Short yet descriptive names should be used when possible. Full names are not req
 Local counters and variables may use shorter or less descriptive names where logical and where readability is not impeded. No prefix is needed for local variables.
 
 .. code-block:: c
-	:linenos:
+
 	void acceptable (void) {
 		int c, x = 10;
 		for (c=0; c<x; c++, x--) {
@@ -58,14 +68,14 @@ Local counters and variables may use shorter or less descriptive names where log
 Function arguments should always be descriptively named, with no exceptions. Function arguments follow the prefix of their intended scope.
 
 .. code-block:: c
-	:linenos:
+
 	void acceptable (char \*string, int len);
 	void unacceptable (char \*c, int x);
 
 Global variables should be prefixed with the ?? prefix.
 
 .. code-block:: c
-	:linenos:
+
 	TODO: add global prefix example
 
 astyle flags: NA
@@ -75,6 +85,7 @@ Pointers and References
 Pointer and reference specifiers should always be attached to the left of a variable name. There are no exceptions to this going forward.
 
 .. code-block:: c
+
 	int \*acceptabele = &variable;
 
 	int \* unacceptable = & variable;
@@ -89,6 +100,7 @@ Tab indentation should always be used, opposed to space indentation. The standar
 Code blocks within function declarations and language statements such as if() and for(), should be indented one intent from the declaration's indent level.
 
 .. code-block:: c
+
 	int acceptable (void) {
 		if (do_something()) {
 			return something;
@@ -106,6 +118,7 @@ Code blocks within function declarations and language statements such as if() an
 Function and other declarations with extended arguments that must be broken onto a new line, should be indented one indent from the declarations indent level.
 
 .. code-block:: c
+
 	void acceptable (int i, int x,
 		char \*separated,
 		uint32_t counter);
@@ -117,6 +130,7 @@ Function and other declarations with extended arguments that must be broken onto
 Switches and case statements should be indented to the same level, with statement code blocks indented one indent from the switch and case indent level.
 
 .. code-block:: c
+
 	switch (acceptable) {
 	case '\x13':
 		break;
@@ -134,6 +148,7 @@ Switches and case statements should be indented to the same level, with statemen
 Closing braces should always be brought back to the indent level of the initial declaraton, not left at the indent level of the code block.
 
 .. code-block:: c
+
 	if (acceptable) {
 		break;
 	}
@@ -148,6 +163,7 @@ Spacing
 Spacing around conditionals, operators, braces, variables, and function declarations, is mandatory, with no spacing between a function call and arguments.
 
 .. code-block:: c
+
 	void acceptable (void) {
 		if (acceptable()) continue;
 		else {
@@ -173,6 +189,7 @@ Braces should be used whenever possible to enclose code blocks. Single line stat
 A multi-line block is defined as being any logical block of code not written on a single line. Such that if a statement has a single command executed when a condition is met, the line may only be broken when enclosed in braces.
 
 .. code-block:: c
+
 	if (acceptable) return true;
 	
 	if (acceptable) {
@@ -193,6 +210,7 @@ Comment Structure
 Single line //, and single and multi-line /\* \*/ comment styles are accepted. All multi-line comments should have a standard comment prefix of " \*".
 
 .. code-block:: c
+
 	// acceptable comment
 	/\* Acceptable comment \*/
 	/\*
