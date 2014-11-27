@@ -1,4 +1,4 @@
 nagios-c-standards
 ==================
 
-Common coding standards for Nagios C projects.
+Common coding standards and git usage for Nagios C projects.
