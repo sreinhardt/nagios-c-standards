@@ -34,7 +34,7 @@ Overall Astyle format command
 
 Variable Conventions
 --------------------
-Short yet descriptive names should be used when possible. Full names are not required, however a reasonable expansion of the name should be possible. Variable names should be separated by underscores(_), not camel case(NagMon) or hyphens(-).
+Short yet descriptive names should be used when possible. Full names are not required, however a reasonable expansion of the name should be possible. Variable names should be separated by underscores(_), not camel case(NagMon or nagiosHost) or hyphens(-).
 
 .. code-block:: c
 
@@ -58,7 +58,7 @@ Local counters and variables may use shorter or less descriptive names where log
 
 .. code-block:: c
 
-	void acceptable (void) {
+	void acceptable(void) {
 		int c, x = 10;
 		for (c=0; c<x; c++, x--) {
 			printf("c=%d\tx=%d\n", c, d);
@@ -69,10 +69,10 @@ Function arguments should always be descriptively named, with no exceptions. Fun
 
 .. code-block:: c
 
-	void acceptable (char *string, int len);
-	void unacceptable (char *c, int x);
+	void acceptable(char *string, int len);
+	void unacceptable(char *c, int x);
 
-Global variables should be prefixed with the ?? prefix.
+Global variables should be prefixed with the ?? prefix.  The use of global variables be minimize and they be included in a structure where necessary and possible.
 
 .. code-block:: c
 
@@ -82,7 +82,7 @@ astyle flags: NA
 
 Pointers and References
 --------------------
-Pointer and reference specifiers should always be attached to the left of a variable name. There are no exceptions to this going forward.
+Pointer and reference specifiers should always be attached to the left of a variable name.
 
 .. code-block:: c
 
@@ -97,25 +97,25 @@ Indentation
 --------------------
 Tab indentation should always be used, opposed to space indentation. The standard of 4 space tabs is generally adhered to, but may be defined separetly within your editor of choice. The adherance to indentation level is more important when working with Nagios projects. In general logical places for indenting should have a single indent applied. All blocks of code should be indented to the same level, with an increased indent level for each logical sub-block. Some special cases and clarification are defined below. Spaces should never be used to reach the same indent level as anothe line, tabs should be the only character used for intenting.
 
-Code blocks within function declarations and language statements such as if() and for(), should be indented one intent from the declaration's indent level.
+Code blocks within function declarations and language statements such as if() and for(), should be indented one level from the declaration's indent level.
 
 .. code-block:: c
 
-	int acceptable (void) {
+	int acceptable(void) {
 		if (do_something()) {
 			return something;
 		}
 		return 0;
 	}
 
-	int unacceptable (void} {
+	int unacceptable(void} {
 			if (do_something()) {
 					return something;
 			}
 			return 0;
 	}
 
-Function and other declarations with extended arguments that must be broken onto a new line, should be indented one indent from the declarations indent level.
+Function and other declarations with extended arguments that must be broken onto a new line, should be indented one level from the declaration's indent level.
 
 .. code-block:: c
 
@@ -164,7 +164,7 @@ Spacing around conditionals, operators, braces, variables, and function declarat
 
 .. code-block:: c
 
-	void acceptable (void) {
+	void acceptable(void) {
 		if (acceptable()) continue;
 		else {
 			break;
